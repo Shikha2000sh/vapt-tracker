@@ -1,0 +1,92 @@
+services:
+
+  mysql:
+
+      image: mysql:8
+
+      container_name: vapt-mysql
+
+      restart: always
+
+      environment:
+
+        MYSQL_ROOT_PASSWORD: root
+
+        MYSQL_DATABASE: vapt_tracker
+
+      ports:
+
+        - "3307:3306"
+
+      volumes:
+
+        - mysql_data:/var/lib/mysql
+
+      healthcheck:
+
+        test:
+          [
+            "CMD",
+            "mysqladmin",
+            "ping",
+            "-h",
+            "localhost"
+          ]
+
+        timeout: 20s
+
+        retries: 10
+
+  backend:
+
+      build: ./backend
+
+      container_name: vapt-backend
+
+      restart: always
+
+      ports:
+
+        - "8080:8080"
+
+      depends_on:
+
+        mysql:
+
+          condition:
+            service_healthy
+
+      environment:
+
+        SPRING_DATASOURCE_URL:
+          jdbc:mysql://mysql:3306/vapt_tracker
+
+        SPRING_DATASOURCE_USERNAME: root
+
+        SPRING_DATASOURCE_PASSWORD: root
+
+      volumes:
+
+        - uploads_data:/app/uploads
+
+  frontend:
+
+    build: ./frontend
+
+    container_name: vapt-frontend
+
+    restart: always
+
+    ports:
+
+      - "80:5173"
+
+    depends_on:
+
+      - backend
+
+volumes:
+
+  mysql_data:
+
+  uploads_data:
