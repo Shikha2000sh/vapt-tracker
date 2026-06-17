@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: vapt-tracker-backend
+    runtime: java
+    rootDir: backend
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
+    startCommand: java -jar target/vapt-tracker-1.0.0.jar
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://dpg-d8pfph6gvqtc7395q2r0-a/vapt_tracker_db
+      - key: SPRING_DATASOURCE_USERNAME
+        value: vapt_tracker_db_user
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: tgEHqJEiTp0wClSMos45biDQyzA3wftx
