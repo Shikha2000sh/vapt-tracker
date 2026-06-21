@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: "https://vapt-tracker-1.onrender.com/api",
 });
 
 API.interceptors.request.use(
