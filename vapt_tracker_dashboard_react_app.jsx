@@ -66,9 +66,10 @@ export default function VAPTTracker() {
               </label>
               <select className="w-full border border-slate-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
                 <option>Select Vendor</option>
-                {vendors.map((vendor) => (
+                <option>Net Access</option>
+                {/* {vendors.map((vendor) => (
                   <option key={vendor}>{vendor}</option>
-                ))}
+                ))} */}
               </select>
             </div>
 

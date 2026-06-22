@@ -412,20 +412,8 @@ export default function TicketFormPage() {
               className="border border-slate-300 p-4 rounded-2xl"
             >
 
-              <option value="">
-                Select Vendor
-              </option>
-
-              {vendors.map((vendor) => (
-
-                <option
-                  key={vendor.id}
-                  value={vendor.id}
-                >
-                  {vendor.vendorName}
-                </option>
-
-              ))}
+              <option value="">Select Vendor</option>
+              <option value="1">Net Access</option>
 
             </select>
 
