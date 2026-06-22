@@ -18,7 +18,8 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
-*.ntvs*
+*.ntvs*Invoke-RestMethod -Uri "https://vapt-tracker-1.onrender.com/api/vendors" -Method POST -ContentType "application/json" -Headers @{Authorization="Bearer YOUR_TOKEN"} -Body '{"vendorName":"Net Access"}'
+
 *.njsproj
 *.sln
 *.sw?
